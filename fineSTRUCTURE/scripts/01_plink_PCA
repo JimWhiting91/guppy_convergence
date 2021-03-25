@@ -1,0 +1,38 @@
+#!/bin/bash
+#PBS -d .
+#PBS -q pq
+#PBS -l walltime=6:00:00
+#PBS -l nodes=1:ppn=4
+#PBS -A Research_Project-T110748
+#PBS -N plink_PCA
+#PBS -e logs/plink_PCA.err.txt
+#PBS -o logs/plink_PCA.out.txt
+#PBS -V
+#PBS -m e -M j.whiting2@exeter.ac.uk
+
+module load PLINK/2.00-alpha1-x86_64
+module load BCFtools/1.6-intel-2017b
+
+echo "Start Plink"
+
+MASTER=~/HP_LP_trials/fineSTRUCTURE/
+VCF=~/guppy_research/five_aside_STAR_vcfs/five_aside_STAR_3033083_final.vcf.gz
+OUT=five_aside_STAR
+
+# Make a vcf with IDs to use in plink
+#bcftools annotate --set-id +'%CHROM\_%POS' $VCF > ${VCF}_IDs.vcf
+
+#Prune SNPs for LD
+plink2 --vcf ${VCF} \
+--out $MASTER/outputs/${OUT}_plink_out_pruned --indep-pairwise 50 5 0.2 --allow-extra-chr
+
+#Make Pruned Data
+plink2 --allow-extra-chr --vcf ${VCF} \
+--extract $MASTER/outputs/${OUT}_plink_out_pruned.prune.in \
+--make-bed --out $MASTER/outputs/${OUT}_plink_out_NoLD
+
+#Run PCA
+plink2 --bfile $MASTER/outputs/${OUT}_plink_out_NoLD --pca --out $MASTER/outputs/${OUT}_plink_out_NoLD_PCA --allow-extra-chr
+
+
+echo "End Plink"
