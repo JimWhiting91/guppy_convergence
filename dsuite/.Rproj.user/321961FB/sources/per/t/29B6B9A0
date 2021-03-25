@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1582123988063.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "187059094",
+    "id" : "29B6B9A0",
+    "lastKnownWriteTime" : 1582736252,
+    "last_content_update" : 1582736252069,
+    "path" : "~/Documents/five_aside/dsuite/R/dsuite_analyse_all_trios.R",
+    "project_path" : "R/dsuite_analyse_all_trios.R",
+    "properties" : {
+        "cursorPosition" : "18,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

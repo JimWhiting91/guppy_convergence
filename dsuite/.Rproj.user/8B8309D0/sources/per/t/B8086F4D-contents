@@ -1,0 +1,363 @@
+############################################################
+# Analyse the Dsuite trios
+lib<-c("data.table","ggplot2","viridis","tidyverse")
+lapply(lib,library,character.only=T)
+source("~/Exeter/five_aside/five_aside_functions.R")
+
+# Dir name for outputs
+dsuite_run <- "five_aside_STAR_v3_wingei_Guan_Tac_sisters_maf01_invariant_filtered_swap_TAC"
+
+dd <- read.table(paste0("data/",dsuite_run,"/",dsuite_run,"_combined_trios_",dsuite_run,"_combined_trios_combined_tree.txt"),header=T)
+dd_Dmin <- read.table(paste0("data/",dsuite_run,"/",dsuite_run,"_combined_trios_",dsuite_run,"_combined_trios_combined_Dmin.txt"),header=T)
+dd_Dbbaa <- read.table(paste0("data/",dsuite_run,"/",dsuite_run,"_combined_trios_",dsuite_run,"_combined_trios_combined_BBAA.txt"),header=T)
+dd<-dd[order(-dd$Dstatistic),]
+
+dd$bonferroni<-p.adjust(dd$p.value,method = "fdr")
+
+outliers<-dd[dd$bonferroni < 0.001,]
+nrow(outliers)
+
+pops<-list(c("GH","GL"),
+           c("TACHP","TACLP"),
+           c("APHP","APLP"),
+           c("OH","OL"),
+           c("MADHP","MADLP"))
+
+river_res<-lapply(pops,function(x){
+  
+  rbind(outliers[outliers$P1 == x[[2]] & outliers$P2 == x[[1]],], outliers[outliers$P1 == x[[1]] & outliers$P2 == x[[2]],])
+  
+})
+
+# Combine and save as a supp table...
+within_river_outliers <- data.frame(rbindlist(river_res))
+write.table(within_river_outliers,
+            "tables/TableSX_within_river_D_outliers.tsv",
+            col.names = T,row.names = F,quote = F,sep = "\t")
+
+# Output all trios, ordered by f4-ratio
+write.table(dd[order(-dd$f4.ratio),],
+            "tables/TableSX_ordered_Dsuite_results.tsv",
+            col.names = T,row.names = F,quote = F,sep = "\t")
+
+                              
+##########################################################
+# Make a matrix and plot for Dmin and BBAA
+Dmat <- matrix(ncol=10,nrow=10)
+colnames(Dmat) <- c("TACHP","TACLP","GH","GL","APHP","APLP","OH","OL","MADHP","MADLP")
+rownames(Dmat) <- colnames(Dmat)
+
+# Fill the mat with Dmin (top) and BBAA (bottom)
+for(i in 1:10){
+  for(j in 1:10){
+    if(i != j){
+      # Get the Dmin rows
+      Dtree_tmp <- dd[dd$P2 == colnames(Dmat)[i] & dd$P3 == colnames(Dmat)[j],]
+      
+      # Ignore if row N is 0
+      if(nrow(Dtree_tmp) > 0){
+        
+        # Add the min above/below
+        if(nrow(Dtree_tmp) == 1){
+          Dmat[i,j] <- Dtree_tmp$Dstatistic
+        } else {
+          Dmat[i,j] <- min(Dtree_tmp$Dstatistic)
+        }
+      }
+      if(nrow(bbaa_tmp) > 0){
+        
+        if(nrow(bbaa_tmp) == 1){
+          Dmat[j,i] <- bbaa_tmp$Dstatistic
+        } else {
+          Dmat[j,i] <- min(bbaa_tmp$Dstatistic)
+        }
+      }
+    }
+  }
+}
+
+# Visualise
+to_plot <- reshape2::melt(Dmat)
+ggplot(to_plot,aes(Var1,Var2,fill=value))+
+  geom_tile()
+
+##### For significant trios, which chroms is introgression strongest on?? #####
+chrs <- read.table("~/Exeter/Genomes/STAR.chromosomes.release.fasta.fai")
+chrs <- chrs[chrs$V2 > 1000000,1]
+inputs <- list.files(paste0("data/",dsuite_run))
+
+# Take only outliers with an f4 ratio > 5%
+within_river_outliers2 <- within_river_outliers[within_river_outliers$f4.ratio > 0.05,]
+
+# Fetch the chrom_res
+chrom_res <- data.frame(rbindlist(lapply(chrs,function(chr){
+  print(chr)
+  chr_inputs <- grep(paste0("_",chr,"_"),inputs,value = T)
+  chr_inputs <- grep("scaf94",chr_inputs,invert = T,value = T)
+  tmp <- read.table(paste0("data/",dsuite_run,"/",grep("tree.txt",chr_inputs,value=T)),header=T)
+  tmp$chr = chr
+  return(tmp)
+})))
+
+# Filter for trios of interest
+trio_chrom_res <- lapply(1:nrow(within_river_outliers2),function(x){
+  trio_focal <- chrom_res[chrom_res$P1 == within_river_outliers2$P1[x] & chrom_res$P2 == within_river_outliers2$P2[x] & chrom_res$P3 == within_river_outliers2$P3[x],]
+  trio_focal[order(-trio_focal$f4.ratio),]
+})
+
+# Compare APLP and APHP introgression by chrom to see if they are associated
+APHP_intro <- trio_chrom_res[[2]]
+APHP_intro$pair <- "APHP-OHP"
+APHP_intro <- APHP_intro[order(APHP_intro$chr),]
+APLP_intro <- trio_chrom_res[[4]]
+APLP_intro$pair <- "APLP-GHP"
+APLP_intro <- APLP_intro[order(APLP_intro$chr),]
+
+# Combine and plot
+APHP_intro$APLP_pair <- APLP_intro$f4.ratio
+ggplot(APHP_intro,aes(f4.ratio,APLP_pair))+
+  geom_point()
+
+# ##########################################################
+# # Make a matrix and plot
+# river_dd<-data.frame(rbindlist(lapply(pops,function(x){
+#   
+#   rbind(dd[dd$P1 == x[[2]] & dd$P2 == x[[1]],], dd[dd$P1 == x[[1]] & dd$P2 == x[[2]],])
+#   
+# })))
+# 
+# # Mark outliers
+# river_dd$signif<-NA
+# river_dd[river_dd$bonferroni < 0.05,"signif"]<-"*"
+# river_dd[river_dd$bonferroni < 0.01,"signif"]<-"**"
+# river_dd[river_dd$bonferroni < 0.001,"signif"]<-"***"
+# 
+# # Subset to plot
+# river_dd_plot <- river_dd[,c("P1","P2","P3","Dstatistic","p.value","f4.ratio","bonferroni","signif")]
+# 
+# # Fill empty spaces with 0s
+# pops2<-unique(river_dd_plot$P3)
+# for(P2 in unique(river_dd_plot$P2)){
+#   for(P3 in pops2){
+#     print(paste0(P2,"_",P3))
+#     if(nrow(river_dd_plot[river_dd_plot$P2 == P2 & river_dd_plot$P3 == P3,]) == 0){
+#       river_dd<-rbind(river_dd_plot,
+#                       data.frame(P1=NA,
+#                                  P2=P2,
+#                                  P3=P3,
+#                                  Dstatistic=0,
+#                                  p.value=1,
+#                                  f4.ratio=0,
+#                                  bonferroni=0,
+#                                  signif=NA))
+#     }
+#   }
+# }
+# 
+# # Also fill in GL because that's weird
+# # river_dd_plot<-rbind(river_dd_plot,
+# #                 data.frame(P1=NA,
+# #                            P2="GL",
+# #                            P3=pops2,
+# #                            Dstatistic=0,
+# #                            p.value=1,
+# #                            f_G=0,
+# #                            bonferroni=0,
+# #                            signif=NA))
+# 
+# # # Also fill in TACHP because that's weird
+# # river_dd<-rbind(river_dd,
+# #                 data.frame(P1=NA,
+# #                            P2="TACHP",
+# #                            P3=pops2,
+# #                            Dstatistic=0,
+# #                            p.value=1,
+# #                            f_G=0,
+# #                            bonferroni=0,
+# #                            signif=NA))
+# 
+# # Make subs
+# to_change<-c("GH","GL","OH","OL")
+# change_to<-c("GHP","GLP","OHP","OLP")
+# for(i in 1:length(to_change)){
+#   river_dd_plot$P2<-gsub(to_change[i],change_to[i],river_dd_plot$P2)
+#   river_dd_plot$P3<-gsub(to_change[i],change_to[i],river_dd_plot$P3)
+# }
+# # Plot
+# 
+# river_dd_plot$P2_F<-factor(river_dd_plot$P2,levels=c("TACHP","TACLP","GHP","GLP","APHP","APLP","OHP","OLP","MADHP","MADLP"))
+# river_dd_plot$P3_F<-factor(river_dd_plot$P3,levels=c("TACHP","TACLP","GHP","GLP","APHP","APLP","OHP","OLP","MADHP","MADLP"))
+# 
+# D_res<-ggplot(river_dd_plot,aes(P2_F,P3_F,fill=f4.ratio))+
+#   geom_tile()+
+#   scale_fill_viridis(option = "C")+
+#   theme_minimal()+
+#   geom_text(aes(label=signif),size=6)+
+#   labs(y="P3",x="P2",fill="D")+
+#   theme(axis.title = element_text(size=18),
+#         axis.text = element_text(size=16),
+#         axis.text.x = element_text(angle=30,hjust=1),
+#         legend.title = element_text(size=16),
+#         legend.text = element_text(size=14),
+#         legend.position = "right",
+#         panel.grid = element_blank())
+# 
+# # Save as an object
+# saveRDS(D_res,
+#         "outputs/Dsuite_P2P3_figure.rds")
+# saveRDS(D_res,
+#         "~/Exeter/five_aside/pop_structure/Dsuite_P2P3_figure.rds")
+
+# ##### On which chromosomes are the strongest APLP, APHP, OHP introgression? #####
+# chrs <- read.table("~/Exeter/Genomes/STAR.chromosomes.release.fasta.fai")
+# chrs <- chrs[chrs$V2 > 1000000,1]
+# inputs <- list.files(paste0("data/",dsuite_run))
+# chrom_res <- data.frame(rbindlist(lapply(chrs,function(chr){
+#   print(chr)
+#   chr_inputs <- grep(paste0("_",chr,"_"),inputs,value = T)
+#   chr_inputs <- grep("scaf94",chr_inputs,invert = T,value = T)
+#   tmp <- read.table(paste0("data/",dsuite_run,"/",grep("tree.txt",chr_inputs,value=T)),header=T)
+#   tmp$chr = chr
+#   return(tmp)
+# })))
+# 
+# # Filter for trio of interest
+# trio_focal <- chrom_res[chrom_res$P1 == "OH" & chrom_res$P2 == "OL" & chrom_res$P3 == "MADLP",]
+# trio_focal[order(-trio_focal$f4.ratio),]
+# trio_focal[order(-trio_focal$D),]
+# trio_focal[order(-trio_focal$Z.score),]
+
+
+
+# # Closer look at GL, APLP -------------------------------------------------
+# trio<-read.table("data/five_aside_STAR_picta_relaxed_genome/GH_GL_APLP_localFstats__500_100.txt",header=T)
+# trio$mid<-rowMeans(trio[,c("windowStart","windowEnd")])
+# 
+# # Summarise by chr
+# chr_avg<-data.frame(trio %>% group_by(chr) %>% summarise(D=mean(D),
+#                                                          f_dM=mean(f_dM)))
+# head(chr_avg[order(-chr_avg$f_dM),],10)
+# 
+# # Plot for each chr
+# plot_dsuite_chr<-function(x){
+#   ggplot(trio[trio$chr == x,],aes(x=mid,y=f_dM))+
+#     geom_line()+
+#     ggtitle(x)
+# }
+# plot_dsuite_chr("chr20")
+# plot_dsuite_chr("000094F_0")
+# plot_dsuite_chr("000117F_0")
+
+
+# # Closer look at scaffold 94, GH OH APHP ----------------------------------
+# trio<-read.table(paste0("data/",dsuite_run,"/GH_APHP_OH_trio_chr20_scaf94_",dsuite_run,"_localFstats_50,25.txt"),header=T)
+# trio$mid<-rowMeans(trio[,c("windowStart","windowEnd")])
+# 
+# CL_AP_introgression <- ggplot(trio,aes(x=mid,y=f_dM))+
+#   geom_step()+
+#   geom_vline(xintercept = c((836423 + 647025),(836423+1297025)),linetype="dotted")+
+#   geom_hline(yintercept = 0,colour = "red2")+
+#   labs(x="Position (Mb)",y=expression(italic(f)[dM]))+
+#   scale_x_continuous(breaks=seq(0,max(trio$mid),2000000),
+#                      labels=seq(0,max(trio$mid),2000000)/1000000)+
+#   ggtitle("Chromosome 20")+
+#   theme_bw()+
+#   theme(panel.grid=element_blank(),
+#         axis.title=element_text(size=20),
+#         axis.text = element_text(size=18),
+#         title = element_text(size=22))
+# 
+# # Write
+# pdf("figs/FigureSX_CL_AP_introgression.pdf",width=12,height=4)
+# CL_AP_introgression
+# dev.off()
+# 
+# #########
+# library(vcfR)
+# devtools::load_all("~/Exeter/genotype_plot/")
+# merged_wingei_vcf <- read.vcfR("~/Exeter/VCFs/five_aside_STAR_wingei_merged_chr20_scaf94_only.vcf")
+# popmap <- data.frame(inds=colnames(extract.gt(merged_wingei_vcf)))
+# popmap$pop <- "Wingei"
+# pops=c("LT","UT","GH","GL","APHP","APLP","LO","UQ","LMD","UMD")
+# for(pop in pops){
+#   popmap[grep(pop,popmap$inds),"pop"] <- pop
+# }
+# merged_wingei_vcf2 <- merged_wingei_vcf[is.biallelic(merged_wingei_vcf),]
+# merged_wingei_vcf2 <- merged_wingei_vcf2[as.integer(merged_wingei_vcf2@fix[,2]) >= 1483448 & 
+#                                            as.integer(merged_wingei_vcf2@fix[,2]) <= 2133448,]
+# test_genotypes <- genotype_plot(vcf_object = merged_wingei_vcf2,
+#                                 popmap = popmap,
+#                                 snp_label_size = 1000000)
+# combine_genotype_plot(test_genotypes)
+# 
+# merged_vcf <- read.vcfR("~/Exeter/VCFs/five_aside_STAR_chr20_scaf94_merged_shapeit_beagle.vcf.gz")
+# popmap <- data.frame(inds=colnames(merged_vcf@gt)[2:ncol(merged_vcf@gt)])
+# popmap$pop <- NA
+# pops=c("LT","UT","GH","GL","APHP","APLP","LO","UQ","LMD","UMD")
+# for(pop in pops){
+#   popmap[grep(pop,popmap$inds),"pop"] <- pop
+# }
+# 
+# merged_vcf2 <- merged_vcf[as.integer(merged_vcf@fix[,2]) >= 1483448 & 
+#                             as.integer(merged_vcf@fix[,2]) <= 2133448,]
+# test_genotypes <- genotype_plot(vcf_object = merged_vcf2,
+#                                 popmap = popmap,
+#                                 snp_label_size = 100000)
+# combine_genotype_plot(test_genotypes)
+# 
+# # Get Fst
+# library(hierfstat)
+# library(adegenet)
+# merged_wingei_vcf_aripo <- merged_wingei_vcf2[,c(1,grep("AP",colnames(merged_wingei_vcf2@gt)))]
+# genind <- vcfR2genind(merged_wingei_vcf_aripo)
+# pop(genind) <- grep("AP",popmap$pop,value=T)
+# fst_dd <- genind2hierfstat(genind)
+# fst_res <- basic.stats(fst_dd)
+# 
+# fst_res2 <- fst_res$perloc
+# fst_res2$pos <- as.integer(merged_wingei_vcf2@fix[,2])
+# ggplot(fst_res2,aes(pos,Fst))+
+#   geom_point()+
+#   geom_vline(xintercept = c(836423+1797025-500000,836423+1797025-1100000))
+# #########
+# 
+# # OI chr20 introgression --------------------------------------------------
+# trio<-read.table("data/GH_TULP_TUHP_localFstats__500_100.txt",header=T)
+# trio$mid<-rowMeans(trio[,c("windowStart","windowEnd")])
+# 
+# # Plot the chromosome and mark the CLAP region...
+# plot_dsuite_chr("chr20")+
+#   geom_vline(xintercept = c((836423 + 647025),(836423+1297025)),linetype="dotted")+
+#   geom_hline(yintercept = 0,colour = "red2")+
+#   labs(x="Position (Mb)",y=expression(italic(f[dM])))+
+#   scale_x_continuous(breaks=seq(0,max(trio$mid),2000000),
+#                      labels=seq(0,max(trio$mid),2000000)/1000000)+
+#   ggtitle("Chromosome 20")+
+#   theme_bw()+
+#   theme(panel.grid=element_blank(),
+#         axis.title=element_text(size=20),
+#         axis.text = element_text(size=18),
+#         title = element_text(size=22))
+# 
+# # Visualise genotypes...
+# vcf <- "~/Exeter/VCFs/OI_chr20_scaf94_merged.vcf.gz"
+# vcf_in <- vcfR::read.vcfR(vcf)
+# TUHP <- grep("TUHP",colnames(vcf_in@gt),value=T)
+# TULP <- grep("TULP",colnames(vcf_in@gt),value=T)
+# GHP <- grep("GH",colnames(vcf_in@gt),value=T)
+# popmap <- list(GHP,TULP,TUHP)
+# names(popmap) <- c("GHP","TULP","TUHP")
+# 
+# genos <- genotype_plot(vcf = vcf,
+#                        chr = "chr20",
+#                        start = 836423 ,
+#                        end = 1797025,
+#                        popmap = popmap)
+# 
+# pdf("figs/OI_chr20_region_genos.pdf",width=12,height=8)
+# plot_grid(genos$positions,
+#           genos$genotypes,
+#           ncol=1,nrow=2,rel_heights=c(1,5),align="v",axis="tblr")
+# dev.off()
+
+
