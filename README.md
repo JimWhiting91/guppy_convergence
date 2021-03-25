@@ -2,6 +2,9 @@
 ### Associated data and scripts for "Drainage-structuring of ancestral variation and a common functional pathway shape limited genomic convergence in natural high- and low-predation guppies"
 #### Contact jwhiting2315@gmail.com with any issues
 
+#### Raw data and SNP-calling
+Raw data for this project is available at ENA: PRJEB43917 (Aripo, Madamas, Tacarigua) and PRJEB36704 (Guanapo and Oropouche). SNP calling was performed using the pipeline described here: https://github.com/josieparis/gatk-snp-calling
+
 #### Five Aside STAR
 Many scripts reference `five_aside_STAR`, this is simply the shorthand name given to the main dataset (five HP and five LP populations, STAR = shorthand name for the genome assembly used).
 
@@ -27,6 +30,7 @@ RAxML/
 SNAPP/
 SV_and_coverage/
 localPCA/
+phasing/
 ```
 
 Note: The scripts associated with fastsimcoal and SFS production were provided by Vitor Sousa and so are not presented here.
