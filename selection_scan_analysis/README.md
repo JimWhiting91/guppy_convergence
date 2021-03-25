@@ -27,7 +27,7 @@ Uses `calc_AF()` from the global `R/five_aside_functions.R` to calculate the all
 Processes the XtX outputs and calculates 10kb windows
 
 #### R/process_baypassAUX_perSNP.R
-Processes the BayPass auxmodel HP-LP association outputs, for e.g. combines back together the runs from the separate subsets and makes windows and baypass result figures (Figure 3B-D). The variant of this `process_baypassAUX_perSNP_noMerge_chr20_scaf94.R` does the same, but does not merge scaffold 94 and chromosome 20 as described in the manuscript.
+Processes the BayPass auxmodel HP-LP association outputs, for e.g. combines back together the runs from the separate subsets and makes windows and baypass result figures (Figure 3B-D). The variant of this `process_baypassAUX_perSNP_noMerge_chr20_scaf94.R` does the same, but does not merge scaffold 94 and chromosome 20 as described in the manuscript. Also produces supp figure for scaffold 94 region with coverage comparisons.
 
 #### R/process_xpehh_perSNP.R
 Processes the XP-EHH outputs from selscan (as described above) and turns to windows.

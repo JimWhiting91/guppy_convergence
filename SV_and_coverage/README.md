@@ -7,6 +7,8 @@ deeptools is available here: https://deeptools.readthedocs.io/en/develop/index.h
 
 breakdancer is available here: http://breakdancer.sourceforge.net/
 
+Also includes Rscripts for analysis/filtering of SVs
+
 ## Summary of scripts
 #### 01a_bamCoverage_run_slurm.sh
 Calculates coverage for individuals from the same population based on BAM files. Runs as an array where each jobID is a chromosome, and can parse population identifier as a trailing variable. For example, `sbatch 01a_bamCoverage_run_slurm.sh GH` will calculate coverage for all bam files where `ls path/to/bams/ | grep "GH"`. Script also makes blacklist regions at the starts and ends of chromosomes where coverage can be difficult to estimate due to repeats. Removing these regions improves normalisation. The variant `01b_bamCoverage_scf.sh` is used over scaffolds, and has a less stringest trimming of data from the start/end of the scaffold
@@ -25,4 +27,14 @@ Calls structural variants based on BAM files and excluding repeat regions (maske
 
 #### 06_run_breakdancer_whole_pop_whole_genome.sh
 Calls structural variants based on BAM files with Breakdancer. Loops over populations (based on river popmaps, as above) and runs over all chr/scaf > 1000000 bp per pop with GNU parallel.
+
+## Summary of Rscripts
+#### R/filter_breakdancer_results.R
+Filters breakdancer outputs
+
+#### R/explore_smoove_filtered_SV_vcfs.R
+Examines smoove-derived SV VCFs for evidence of SVs at candidate regions.
+
+#### R/SV_fst_analyses.R			
+Calculates Fst for SVs within rivers. Identifies deletion at chr15 cadherin gene in supp figure.
 
