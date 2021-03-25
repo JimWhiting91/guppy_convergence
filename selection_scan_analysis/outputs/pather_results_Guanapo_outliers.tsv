@@ -1,0 +1,152 @@
+PANTHER Pathways	danio_orthologue_universe.txt - REFLIST (13223)	river_specific_outlier_danio_ensembl_Guanapo.txt (102)	river_specific_outlier_danio_ensembl_Guanapo.txt (expected)	river_specific_outlier_danio_ensembl_Guanapo.txt (over/under)	river_specific_outlier_danio_ensembl_Guanapo.txt (fold Enrichment)	river_specific_outlier_danio_ensembl_Guanapo.txt (raw P-value)	river_specific_outlier_danio_ensembl_Guanapo.txt (FDR)
+FAS signaling pathway (P00020)	28	1	.22	+	4.63	2.00E-01	1.00E00
+Axon guidance mediated by netrin (P00009)	34	1	.26	+	3.81	2.36E-01	1.00E00
+Histamine H1 receptor mediated signaling pathway (P04385)	37	1	.29	+	3.50	2.54E-01	1.00E00
+Cadherin signaling pathway (P00012)	90	2	.69	+	2.88	1.57E-01	1.00E00
+Wnt signaling pathway (P00057)	194	4	1.50	+	2.67	6.55E-02	1.00E00
+Oxytocin receptor mediated signaling pathway (P04391)	51	1	.39	+	2.54	3.30E-01	1.00E00
+Thyrotropin-releasing hormone receptor signaling pathway (P04394)	52	1	.40	+	2.49	3.35E-01	1.00E00
+T cell activation (P00053)	54	1	.42	+	2.40	3.45E-01	1.00E00
+VEGF signaling pathway (P00056)	55	1	.42	+	2.36	3.50E-01	1.00E00
+B cell activation (P00010)	55	1	.42	+	2.36	3.50E-01	1.00E00
+Interleukin signaling pathway (P00036)	56	1	.43	+	2.31	3.55E-01	1.00E00
+5HT2 type receptor mediated signaling pathway (P04374)	56	1	.43	+	2.31	3.55E-01	1.00E00
+CCKR signaling map (P06959)	131	2	1.01	+	1.98	2.71E-01	1.00E00
+Parkinson disease (P00049)	76	1	.59	+	1.71	4.48E-01	1.00E00
+FGF signaling pathway (P00021)	92	1	.71	+	1.41	5.12E-01	1.00E00
+Alzheimer disease-presenilin pathway (P00004)	92	1	.71	+	1.41	5.12E-01	1.00E00
+TGF-beta signaling pathway (P00052)	93	1	.72	+	1.39	5.16E-01	1.00E00
+EGF receptor signaling pathway (P00018)	107	1	.83	+	1.21	5.65E-01	1.00E00
+PDGF signaling pathway (P00047)	123	1	.95	+	1.05	6.16E-01	1.00E00
+Unclassified (UNCLASSIFIED)	11340	91	87.47	+	1.04	3.93E-01	1.00E00
+Integrin signalling pathway (P00034)	133	1	1.03	-	.97	1.00E00	1.00E00
+Angiogenesis (P00005)	145	1	1.12	-	.89	1.00E00	1.00E00
+Inflammation mediated by chemokine and cytokine signaling pathway (P00031)	164	1	1.27	-	.79	1.00E00	1.00E00
+Gonadotropin-releasing hormone receptor pathway (P06664)	199	1	1.54	-	.65	1.00E00	1.00E00
+Alzheimer disease-amyloid secretase pathway (P00003)	61	0	.47	-	 < 0.01	1.00E00	1.00E00
+Alpha adrenergic receptor signaling pathway (P00002)	18	0	.14	-	 < 0.01	1.00E00	1.00E00
+Adrenaline and noradrenaline biosynthesis (P00001)	16	0	.12	-	 < 0.01	1.00E00	1.00E00
+Nicotine pharmacodynamics pathway (P06587)	32	0	.25	-	 < 0.01	1.00E00	1.00E00
+Toll pathway-drosophila (P06217)	2	0	.02	-	 < 0.01	1.00E00	1.00E00
+MYO signaling pathway (P06215)	1	0	.01	-	 < 0.01	1.00E00	1.00E00
+Xanthine and guanine salvage pathway (P02788)	3	0	.02	-	 < 0.01	1.00E00	1.00E00
+Activin beta signaling pathway (P06210)	1	0	.01	-	 < 0.01	1.00E00	1.00E00
+Vitamin B6 metabolism (P02787)	4	0	.03	-	 < 0.01	1.00E00	1.00E00
+Valine biosynthesis (P02785)	3	0	.02	-	 < 0.01	1.00E00	1.00E00
+Tyrosine biosynthesis (P02784)	1	0	.01	-	 < 0.01	1.00E00	1.00E00
+Triacylglycerol metabolism (P02782)	1	0	.01	-	 < 0.01	1.00E00	1.00E00
+Thiamin metabolism (P02780)	3	0	.02	-	 < 0.01	1.00E00	1.00E00
+ALP23B signaling pathway (P06209)	1	0	.01	-	 < 0.01	1.00E00	1.00E00
+Synaptic vesicle trafficking (P05734)	28	0	.22	-	 < 0.01	1.00E00	1.00E00
+GABA-B receptor II signaling (P05731)	32	0	.25	-	 < 0.01	1.00E00	1.00E00
+Endogenous cannabinoid signaling (P05730)	18	0	.14	-	 < 0.01	1.00E00	1.00E00
+Sulfate assimilation (P02778)	1	0	.01	-	 < 0.01	1.00E00	1.00E00
+Succinate to proprionate conversion (P02777)	4	0	.03	-	 < 0.01	1.00E00	1.00E00
+Serine glycine biosynthesis (P02776)	5	0	.04	-	 < 0.01	1.00E00	1.00E00
+Salvage pyrimidine ribonucleotides (P02775)	6	0	.05	-	 < 0.01	1.00E00	1.00E00
+Salvage pyrimidine deoxyribonucleotides (P02774)	2	0	.02	-	 < 0.01	1.00E00	1.00E00
+S-adenosylmethionine biosynthesis (P02773)	4	0	.03	-	 < 0.01	1.00E00	1.00E00
+Pyruvate metabolism (P02772)	6	0	.05	-	 < 0.01	1.00E00	1.00E00
+Pyrimidine Metabolism (P02771)	10	0	.08	-	 < 0.01	1.00E00	1.00E00
+Pyridoxal phosphate salvage pathway (P02770)	3	0	.02	-	 < 0.01	1.00E00	1.00E00
+2-arachidonoylglycerol biosynthesis (P05726)	7	0	.05	-	 < 0.01	1.00E00	1.00E00
+Purine metabolism (P02769)	7	0	.05	-	 < 0.01	1.00E00	1.00E00
+Proline biosynthesis (P02768)	4	0	.03	-	 < 0.01	1.00E00	1.00E00
+Phenylethylamine degradation (P02766)	3	0	.02	-	 < 0.01	1.00E00	1.00E00
+Pentose phosphate pathway (P02762)	4	0	.03	-	 < 0.01	1.00E00	1.00E00
+p38 MAPK pathway (P05918)	40	0	.31	-	 < 0.01	1.00E00	1.00E00
+Opioid proopiomelanocortin pathway (P05917)	33	0	.25	-	 < 0.01	1.00E00	1.00E00
+Opioid prodynorphin pathway (P05916)	30	0	.23	-	 < 0.01	1.00E00	1.00E00
+Opioid proenkephalin pathway (P05915)	33	0	.25	-	 < 0.01	1.00E00	1.00E00
+Enkephalin release (P05913)	34	0	.26	-	 < 0.01	1.00E00	1.00E00
+Dopamine receptor mediated signaling pathway (P05912)	52	0	.40	-	 < 0.01	1.00E00	1.00E00
+Angiotensin II-stimulated signaling through G proteins and beta-arrestin (P05911)	30	0	.23	-	 < 0.01	1.00E00	1.00E00
+Pyridoxal-5-phosphate biosynthesis (P02759)	2	0	.02	-	 < 0.01	1.00E00	1.00E00
+Ornithine degradation (P02758)	5	0	.04	-	 < 0.01	1.00E00	1.00E00
+O-antigen biosynthesis (P02757)	3	0	.02	-	 < 0.01	1.00E00	1.00E00
+N-acetylglucosamine metabolism (P02756)	5	0	.04	-	 < 0.01	1.00E00	1.00E00
+Methylmalonyl pathway (P02755)	5	0	.04	-	 < 0.01	1.00E00	1.00E00
+Methylcitrate cycle (P02754)	4	0	.03	-	 < 0.01	1.00E00	1.00E00
+Methionine biosynthesis (P02753)	2	0	.02	-	 < 0.01	1.00E00	1.00E00
+Mannose metabolism (P02752)	3	0	.02	-	 < 0.01	1.00E00	1.00E00
+Lysine biosynthesis (P02751)	1	0	.01	-	 < 0.01	1.00E00	1.00E00
+Ubiquitin proteasome pathway (P00060)	48	0	.37	-	 < 0.01	1.00E00	1.00E00
+Leucine biosynthesis (P02749)	3	0	.02	-	 < 0.01	1.00E00	1.00E00
+Isoleucine biosynthesis (P02748)	4	0	.03	-	 < 0.01	1.00E00	1.00E00
+Heme biosynthesis (P02746)	8	0	.06	-	 < 0.01	1.00E00	1.00E00
+Glutamine glutamate conversion (P02745)	6	0	.05	-	 < 0.01	1.00E00	1.00E00
+Fructose galactose metabolism (P02744)	8	0	.06	-	 < 0.01	1.00E00	1.00E00
+Formyltetrahydroformate biosynthesis (P02743)	6	0	.05	-	 < 0.01	1.00E00	1.00E00
+Tetrahydrofolate biosynthesis (P02742)	5	0	.04	-	 < 0.01	1.00E00	1.00E00
+Flavin biosynthesis (P02741)	2	0	.02	-	 < 0.01	1.00E00	1.00E00
+De novo pyrimidine ribonucleotides biosythesis (P02740)	7	0	.05	-	 < 0.01	1.00E00	1.00E00
+p53 pathway (P00059)	57	0	.44	-	 < 0.01	1.00E00	1.00E00
+mRNA splicing (P00058)	6	0	.05	-	 < 0.01	1.00E00	1.00E00
+Transcription regulation by bZIP transcription factor (P00055)	47	0	.36	-	 < 0.01	1.00E00	1.00E00
+Toll receptor signaling pathway (P00054)	40	0	.31	-	 < 0.01	1.00E00	1.00E00
+p53 pathway feedback loops 2 (P04398)	40	0	.31	-	 < 0.01	1.00E00	1.00E00
+p53 pathway by glucose deprivation (P04397)	15	0	.12	-	 < 0.01	1.00E00	1.00E00
+TCA cycle (P00051)	6	0	.05	-	 < 0.01	1.00E00	1.00E00
+Vitamin D metabolism and pathway (P04396)	7	0	.05	-	 < 0.01	1.00E00	1.00E00
+Plasminogen activating cascade (P00050)	12	0	.09	-	 < 0.01	1.00E00	1.00E00
+Vasopressin synthesis (P04395)	9	0	.07	-	 < 0.01	1.00E00	1.00E00
+Ras Pathway (P04393)	64	0	.49	-	 < 0.01	1.00E00	1.00E00
+De novo pyrimidine deoxyribonucleotide biosynthesis (P02739)	6	0	.05	-	 < 0.01	1.00E00	1.00E00
+P53 pathway feedback loops 1 (P04392)	4	0	.03	-	 < 0.01	1.00E00	1.00E00
+De novo purine biosynthesis (P02738)	21	0	.16	-	 < 0.01	1.00E00	1.00E00
+Coenzyme A biosynthesis (P02736)	5	0	.04	-	 < 0.01	1.00E00	1.00E00
+Asparagine and aspartate biosynthesis (P02730)	2	0	.02	-	 < 0.01	1.00E00	1.00E00
+PI3 kinase pathway (P00048)	47	0	.36	-	 < 0.01	1.00E00	1.00E00
+Oxidative stress response (P00046)	48	0	.37	-	 < 0.01	1.00E00	1.00E00
+Notch signaling pathway (P00045)	23	0	.18	-	 < 0.01	1.00E00	1.00E00
+Nicotinic acetylcholine receptor signaling pathway (P00044)	76	0	.59	-	 < 0.01	1.00E00	1.00E00
+Muscarinic acetylcholine receptor 2 and 4 signaling pathway (P00043)	55	0	.42	-	 < 0.01	1.00E00	1.00E00
+Muscarinic acetylcholine receptor 1 and 3 signaling pathway (P00042)	52	0	.40	-	 < 0.01	1.00E00	1.00E00
+Histamine synthesis (P04387)	1	0	.01	-	 < 0.01	1.00E00	1.00E00
+Metabotropic glutamate receptor group I pathway (P00041)	25	0	.19	-	 < 0.01	1.00E00	1.00E00
+Histamine H2 receptor mediated signaling pathway (P04386)	25	0	.19	-	 < 0.01	1.00E00	1.00E00
+Metabotropic glutamate receptor group II pathway (P00040)	40	0	.31	-	 < 0.01	1.00E00	1.00E00
+Gamma-aminobutyric acid synthesis (P04384)	6	0	.05	-	 < 0.01	1.00E00	1.00E00
+Ascorbate degradation (P02729)	2	0	.02	-	 < 0.01	1.00E00	1.00E00
+Arginine biosynthesis (P02728)	5	0	.04	-	 < 0.01	1.00E00	1.00E00
+Androgen/estrogene/progesterone biosynthesis (P02727)	5	0	.04	-	 < 0.01	1.00E00	1.00E00
+Cortocotropin releasing factor receptor signaling pathway (P04380)	27	0	.21	-	 < 0.01	1.00E00	1.00E00
+Aminobutyrate degradation (P02726)	2	0	.02	-	 < 0.01	1.00E00	1.00E00
+Allantoin degradation (P02725)	2	0	.02	-	 < 0.01	1.00E00	1.00E00
+Alanine biosynthesis (P02724)	2	0	.02	-	 < 0.01	1.00E00	1.00E00
+Adenine and hypoxanthine salvage pathway (P02723)	5	0	.04	-	 < 0.01	1.00E00	1.00E00
+Acetate utilization (P02722)	2	0	.02	-	 < 0.01	1.00E00	1.00E00
+ATP synthesis (P02721)	6	0	.05	-	 < 0.01	1.00E00	1.00E00
+Metabotropic glutamate receptor group III pathway (P00039)	60	0	.46	-	 < 0.01	1.00E00	1.00E00
+JAK/STAT signaling pathway (P00038)	12	0	.09	-	 < 0.01	1.00E00	1.00E00
+Ionotropic glutamate receptor pathway (P00037)	42	0	.32	-	 < 0.01	1.00E00	1.00E00
+Interferon-gamma signaling pathway (P00035)	25	0	.19	-	 < 0.01	1.00E00	1.00E00
+Beta3 adrenergic receptor signaling pathway (P04379)	24	0	.19	-	 < 0.01	1.00E00	1.00E00
+Insulin/IGF pathway-protein kinase B signaling cascade (P00033)	33	0	.25	-	 < 0.01	1.00E00	1.00E00
+Beta2 adrenergic receptor signaling pathway (P04378)	39	0	.30	-	 < 0.01	1.00E00	1.00E00
+Insulin/IGF pathway-mitogen activated protein kinase kinase/MAP kinase cascade (P00032)	29	0	.22	-	 < 0.01	1.00E00	1.00E00
+Beta1 adrenergic receptor signaling pathway (P04377)	40	0	.31	-	 < 0.01	1.00E00	1.00E00
+5HT4 type receptor mediated signaling pathway (P04376)	30	0	.23	-	 < 0.01	1.00E00	1.00E00
+Hypoxia response via HIF activation (P00030)	21	0	.16	-	 < 0.01	1.00E00	1.00E00
+5HT3 type receptor mediated signaling pathway (P04375)	14	0	.11	-	 < 0.01	1.00E00	1.00E00
+5HT1 type receptor mediated signaling pathway (P04373)	37	0	.29	-	 < 0.01	1.00E00	1.00E00
+5-Hydroxytryptamine degredation (P04372)	13	0	.10	-	 < 0.01	1.00E00	1.00E00
+5-Hydroxytryptamine biosynthesis (P04371)	2	0	.02	-	 < 0.01	1.00E00	1.00E00
+Huntington disease (P00029)	104	0	.80	-	 < 0.01	1.00E00	1.00E00
+Heterotrimeric G-protein signaling pathway-rod outer segment phototransduction (P00028)	33	0	.25	-	 < 0.01	1.00E00	1.00E00
+Heterotrimeric G-protein signaling pathway-Gq alpha and Go alpha mediated pathway (P00027)	106	0	.82	-	 < 0.01	1.00E00	1.00E00
+Heterotrimeric G-protein signaling pathway-Gi alpha and Gs alpha mediated pathway (P00026)	130	0	1.00	-	 < 0.01	6.29E-01	1.00E00
+Hedgehog signaling pathway (P00025)	19	0	.15	-	 < 0.01	1.00E00	1.00E00
+Glycolysis (P00024)	15	0	.12	-	 < 0.01	1.00E00	1.00E00
+General transcription regulation (P00023)	31	0	.24	-	 < 0.01	1.00E00	1.00E00
+General transcription by RNA polymerase I (P00022)	13	0	.10	-	 < 0.01	1.00E00	1.00E00
+Endothelin signaling pathway (P00019)	73	0	.56	-	 < 0.01	1.00E00	1.00E00
+DNA replication (P00017)	22	0	.17	-	 < 0.01	1.00E00	1.00E00
+Cytoskeletal regulation by Rho GTPase (P00016)	53	0	.41	-	 < 0.01	1.00E00	1.00E00
+Circadian clock system (P00015)	13	0	.10	-	 < 0.01	1.00E00	1.00E00
+Cholesterol biosynthesis (P00014)	11	0	.08	-	 < 0.01	1.00E00	1.00E00
+Cell cycle (P00013)	21	0	.16	-	 < 0.01	1.00E00	1.00E00
+Blood coagulation (P00011)	33	0	.25	-	 < 0.01	1.00E00	1.00E00
+Axon guidance mediated by Slit/Robo (P00008)	23	0	.18	-	 < 0.01	1.00E00	1.00E00
+Axon guidance mediated by semaphorins (P00007)	21	0	.16	-	 < 0.01	1.00E00	1.00E00
+Apoptosis signaling pathway (P00006)	81	0	.62	-	 < 0.01	1.00E00	1.00E00
