@@ -9,7 +9,7 @@ Raw data for this project is available at ENA: PRJEB43917 (Aripo, Madamas, Tacar
 Many scripts reference `five_aside_STAR`, this is simply the shorthand name given to the main dataset (five HP and five LP populations, STAR = shorthand name for the genome assembly used).
 
 #### VCF Data
-VCF data is available from dryad: XXX, store in `VCFs/`. There are two VCFs, a phased VCF with WGS from the 10 focal guppy populations, and an additional unphased VCF that includes additional data from six P. wingei individuals. The P. wingei VCF is used for introgression analyses, but all other analyses are run on the main VCF.
+VCF data is available from dryad: XXX, store in `VCFs/`. There are two main VCFs, a phased VCF with WGS from the 10 focal guppy populations, and an additional unphased VCF that includes additional data from six P. wingei individuals. The P. wingei VCF is used for introgression analyses, but all other analyses are run on the main VCF. Also available are the smoove SV VCFs that are used for within-river Fst analysis of SVs.
 
 #### General data and functions
 General functions can be found in `R/`, these are sourced in various R scripts and the path may need updating to reflect their current path. These include important functions such as the liftover of scaffold 000094F_0 positions to the updated chr20.
