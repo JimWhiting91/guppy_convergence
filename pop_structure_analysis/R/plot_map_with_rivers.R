@@ -14,12 +14,12 @@ tacarigua_river <- st_read(dsn = "data/trinidad_tobago/tacarigua_river_trinidad.
 madamas_river <- st_read(dsn = "data/trinidad_tobago/madamas_river_trinidad.shp")
 oropouche_river <- st_read(dsn = "data/trinidad_tobago/oropouche_river_trinidad.shp")
 
-# Get elevation data
-trini_elevation <- raster("data/TTO_alt/TTG_alt")
-trini_elevation_df <- as.data.frame(trini_elevation, xy = TRUE)
+# # Get elevation data
+# trini_elevation <- raster("data/TTO_alt/TTG_alt")
+# trini_elevation_df <- as.data.frame(trini_elevation, xy = TRUE)
 
-trini_elevation1 <- raster("data/TTO_alt/n10_w061_3arc_v2.tif")
-trini_elevation2 <- raster("data/TTO_alt/n10_w062_3arc_v2.tif")
+trini_elevation1 <- raster("data/TTO_alt/n10_w061_1arc_v3.tif")
+trini_elevation2 <- raster("data/TTO_alt/n10_w062_1arc_v3.tif")
 trini_elevation1_df <- as.data.frame(trini_elevation1, xy = TRUE)
 colnames(trini_elevation1_df)[3] <- "alt" 
 trini_elevation2_df <- as.data.frame(trini_elevation2, xy = TRUE)

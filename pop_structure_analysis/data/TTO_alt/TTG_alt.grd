@@ -1,0 +1,27 @@
+[general] 
+creator=R package 'raster' 
+created= 2011-11-12 14:42:12 
+[georeference] 
+nrows= 180 
+ncols= 192 
+xmin= -62 
+ymin= 9.9 
+xmax= -60.4 
+ymax= 11.4 
+projection= +proj=longlat +ellps=WGS84 
+[data] 
+datatype= INT2S 
+byteorder= little 
+nbands= 1 
+bandorder= BIL 
+categorical= FALSE 
+minvalue= -8 
+maxvalue= 848 
+nodatavalue= -9999 
+[legend] 
+legendtype=  
+values=  
+color=  
+[description] 
+layername= TTG_alt 
+history=  
